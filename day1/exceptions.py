@@ -5,8 +5,7 @@ def calculate_geometric_series(a, r, n=10):
     """Calculate the sum of a geometric series"""
     if r == 1:
         return a * (n + 1)
-    else:  # this can be omitted
-        return a * (1 - r ** (n + 1)) / (1 - r)
+    return a * (1 - r ** (n + 1)) / (1 - r)
 
 
 def main():
@@ -20,7 +19,7 @@ def main():
     try:
         assert n >= 1
     except AssertionError:
-        raise ValueError(f"Invalid value for n; default to n=10...") #, file=sys.stderr)
+        raise ValueError(f"Invalid value for n; default to n=10...")
     else:
         print(f"s_{n} = {calculate_geometric_series(a, r, n=n)}")
     return 0
