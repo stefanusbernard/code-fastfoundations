@@ -1,5 +1,7 @@
 import random
+import shutil
 import sys
+import textwrap
 
 
 def print_5s():
@@ -63,7 +65,7 @@ def string_is_properties(string):
     print(f"{string.isspace() = }")
     # isdecimal, isdigit, isnumeric
     print(f"{string.isdigit() = }")
-    print(f"{string.isdigit() = }")
+    print(f"{string.isdecimal() = }")
     print(f"{string.isnumeric() = }")
     # isascii, isidentifier
     print(f"{string.isascii() = }")
@@ -74,6 +76,87 @@ def string_is_properties(string):
     print(f"{string.isupper() = }")
 
 
+def slicing_and_dicing_strings(string, tail=" ><|()[]"):
+    # strip
+    print(f"{string.strip(tail) = }")
+    # split
+    sentence = "Be|the|change|that|you|wish|to|see|in|the|world."
+    print(f"{sentence = }")
+    split_sentence = sentence.split('|')
+    print(f"{split_sentence = }")
+    # partition
+    print(f"{sentence.partition('you') = }")
+    # join
+    print(f"{' '.join(split_sentence) = }")
+
+
+def string_method_formatting(string: str):
+    width, height = shutil.get_terminal_size()
+    print(f"terminal dimensions (w,h): {width, height}")
+    # justification: rjust, center, ljust, zfill
+    print(string.rjust80)
+    print(string.center80)
+    print(string.ljust80)
+    print(string.zfill80)
+    # case: capitalize, swapcase, upper, lower, title
+    print(f"{string.capitalize() = }")
+    print(f"{string.swapcase() = }")
+    print(f"{string.upper().swapcase() = }")
+    print(f"{string.upper() = }")
+    print(f"{string.title() = }")
+    print(f"{string.lower() = }")
+
+
+def string_format_minilanguage():
+    """String formatting using the minilanguage """
+    width, height = shutil.get_terminal_size()
+    address1 = "14 plowden road"
+    address2 = "torquay"
+    address3 = "devon"
+    address4 = "tq6 1rs"
+    address5 = "tel 0742 06538"
+    date = "22 december 2007"
+    to1 = "sfi centre for research training in genomics data science"
+    to2 = "school of mathematics, statistics and applied mathematics"
+    to3 = "national university of ireland, galway,"
+    to4 = "ireland"
+    ref = "application for post as administrator"
+    salutation1 = "dear madam/sir"
+    # the body is a list of lowercase strings
+    body = [
+        "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."]
+    # first, use map and capitalise each sentence in the list and join into a string separated by spaces
+    proper_case_body_string = " ".join(map(lambda s: s.capitalize(), body))
+    # use textwrap.wrap() to chop the string into a list of strings each at most 'width' long
+    wrapped_body_list = textwrap.wrap(proper_case_body_string, width=width)
+    # now join all shortened strings together adding a newline (\n) at the end of each
+    # producing a wrapped body
+    wrapped_body = "".join(map(lambda s: f"{s:<{width}}\n", wrapped_body_list))
+    salutation2 = "yours sincerely"
+    signature = "Abott F. Geraldine"
+    print(f"""\
+{address1.title():>{width}}
+{address2.title():>{width}}
+{address3.title():>{width}}
+{address4.upper():>{width}}
+{address5.capitalize():>{width}}
+{to1.title():<60}{date.title():>20}
+{to2.title():<{width}}
+{to3.title():<{width}}
+{to4.title():<{width}}
+
+{salutation1.title():<{width}},
+
+{ref.upper():^{width}}
+
+{wrapped_body}
+
+{salutation2.capitalize():<{width}}
+
+{signature:<{width}}
+""")
 
 
 def main():
@@ -81,7 +164,10 @@ def main():
     # working_with_bytes()
     # print_triple_quoted()
     # string_search('who')
-    string_is_properties(input())
+    # string_is_properties(input())
+    # slicing_and_dicing_strings(input())
+    # string_method_formatting(input())
+    # string_format_minilanguage()
     return 0
 
 
