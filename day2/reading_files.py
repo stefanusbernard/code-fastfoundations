@@ -30,12 +30,6 @@ def reading_file_contents():
         print(f"{ f.readlines() = }")
 
 
-def iterating_over_file_contents():
-    with open("think_different.txt") as f:
-        for row in f:
-            print(row)
-
-
 def navigating_files():
     with open("butterfly.txt") as f:
         # first let's read everything
