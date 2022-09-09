@@ -5,7 +5,6 @@ import time
 
 
 def func1(lock):
-    """Write to stdout"""
     lock.acquire()
     # with lock:
     print(f"message 1 from func1")
@@ -16,7 +15,6 @@ def func1(lock):
 
 
 def func2(lock):
-    """Write to stdout"""
     with lock:
         print(f"message 1 from func2")
         time.sleep(1)

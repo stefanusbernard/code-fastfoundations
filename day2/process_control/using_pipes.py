@@ -41,9 +41,10 @@ def present_results(result_end):
 
 def main():
     """
-    # a pipe has two ends:
-    # - first one is sending data to the worker
-    # - the second one is for sending results to the presenter
+    # a pipe has two ends; each can be used for sending and receiving data
+    # - first one is for sending/receiving data to/from the parent
+    # - second one is for sending/receiving data to/from the child
+    # generate_data process -> work_on_data process -> present_results process
     """
     data_end, input_end = multiprocessing.Pipe()
     output_end, result_end = multiprocessing.Pipe()
