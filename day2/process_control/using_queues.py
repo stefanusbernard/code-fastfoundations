@@ -1,5 +1,6 @@
 import multiprocessing
 import random
+import sys
 import time
 
 
@@ -12,8 +13,9 @@ class Producer(multiprocessing.Process):
         for i in range(10):
             item = random.random()
             self.queue.put(item)
-            print(f"Producer: putting {item}")
+            print(f"Producer ==> {item}")
             time.sleep(1)
+        print("Producer is done!")
 
 
 class Consumer(multiprocessing.Process):
@@ -22,18 +24,18 @@ class Consumer(multiprocessing.Process):
         self.queue = queue
 
     def run(self):
+        time.sleep(5)
         while True:
             if self.queue.empty():
-                print("Finished!")
+                print("Consumer is done!")
                 break
             else:
-                time.sleep(2)
                 item = self.queue.get()
-                print(f"Consumer: getting {item}")
+                print(f"Consumer <== {item}")
                 time.sleep(1)
 
 
-if __name__ == "__main__":
+def main():
     queue = multiprocessing.Queue()
     producer = Producer(queue)
     consumer = Consumer(queue)
@@ -41,3 +43,8 @@ if __name__ == "__main__":
     consumer.start()
     producer.join()
     consumer.join()
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
