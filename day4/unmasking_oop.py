@@ -45,6 +45,10 @@ def main():
     print(small_circle)
     print(big_circle)
 
+    canvas = Canvas(1200, 780)
+    canvas.mystery_method()
+    turtle.done()
+
     return os.EX_OK
 
 
