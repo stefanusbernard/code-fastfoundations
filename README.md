@@ -1,4 +1,4 @@
-# python-fastfoundations
+# Code FastFoundations™
 
 By the end of this course, we want every dedicated student to have:
 - an end-to-end perspective of how to work with computational machines, not just how to use a programming language;
