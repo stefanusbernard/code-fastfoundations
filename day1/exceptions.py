@@ -17,6 +17,12 @@ def main():
     r = float(input("r: "))
     n = int(input("n: "))
     try:
+        assert isinstance(r, float)
+    except:
+        raise ValueError('invalid input for r')
+
+    n = int(input('n: '))
+    try:
         assert n >= 1
     except AssertionError:
         raise ValueError(f"Invalid value for n; default to n=10...")

@@ -170,6 +170,18 @@ def main():
     # string_format_minilanguage()
     return 0
 
+def get_distance(string):
+    split_sentence = string.split('|')
+    new_list = []
+    for i in split_sentence[3:9]:
+        new_list.append(float(i))
+
+    phyt_1 = new_list[:3]
+    phyt_2 = new_list[3:]
+
+    # print(f"{split_sentence = }")
+
+get_distance('violet_blue|convert|red|6.3327|9.4423|113.3428|7.3298|5.3353|9.9283|over|all')
 
 if __name__ == '__main__':
     sys.exit(main())

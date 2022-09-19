@@ -26,12 +26,21 @@ def using_filter():
     print(f"{words = }")
     print(f"{filter(lambda w: len(w) > 7, words) = }")
 
+def function_exercise(dict):
+    result_dict = dict()
+    for key, value in dict.items():
+        result_dict[key] = value*value
+    return result_dict
 
+
+test = {'a':1, 'b':2, 'c':3}
 def main():
-    using_map()
-    using_map_and_lambda()
-    using_filter()
-    return 0
+    function_exercise(test)
+    # using_map()
+    # using_map_and_lambda()
+    # using_filter()
+    # return 0
+
 
 
 if __name__ == '__main__':
